@@ -1,6 +1,7 @@
 package ejercicios;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class EjercicioE {
 
@@ -25,8 +26,11 @@ public class EjercicioE {
 			System.out.println(moviles);
 		}
 
-		System.out.println("LISTA ORDENADA:\n");
+		System.out.println("\nLISTA ORDENADA:\n");
+		Collections.sort(listaMovil);
 		
-	}
-
+        for (Moviles movil : listaMovil) {
+            System.out.println(movil);
+        }
+    }
 }

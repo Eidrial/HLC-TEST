@@ -17,10 +17,12 @@ public class EjercicioD {
 		System.out.println(l2.toString());
 		
 		if (l1.getNumPag() > l2.getNumPag()) {
-			System.out.println("El libro '" + l1.getTitulo() + "' tiene más páginas que el libro " + l2.getTitulo() + ".");
-		} else {
-			System.out.println("El libro '" + l2.getTitulo() + "' tiene más páginas que el libro " + l1.getTitulo() + ".");
-		}
+            System.out.println("El libro '" + l1.getTitulo() + "' tiene más páginas que el libro '" + l2.getTitulo() + "'.");
+        } else if (l1.getNumPag() < l2.getNumPag()) {
+            System.out.println("El libro '" + l2.getTitulo() + "' tiene más páginas que el libro '" + l1.getTitulo() + "'.");
+        } else {
+            System.out.println("Ambos libros tienen la misma cantidad de páginas.");
+        }
 		
 		
 		

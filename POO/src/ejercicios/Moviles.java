@@ -3,10 +3,10 @@ package ejercicios;
 import java.util.Objects;
 
 public class Moviles implements Comparable<Moviles> {
-	
+
 	private String marca;
 	private int precio;
-	
+
 	public Moviles(String marca, int precio) {
 		this.marca = marca;
 		this.precio = precio;
@@ -51,10 +51,13 @@ public class Moviles implements Comparable<Moviles> {
 	}
 
 	@Override
-	public int compareTo(Moviles o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
+	public int compareTo(Moviles otro) {
+		int comparacionPrecio = Double.compare(this.precio, otro.precio);
 
+		if (comparacionPrecio == 0) {
+			return this.marca.compareTo(otro.marca);
+		}
+
+		return comparacionPrecio;
+	}
 }
