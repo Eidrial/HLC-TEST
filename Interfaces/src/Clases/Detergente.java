@@ -10,13 +10,15 @@ public class Detergente implements EsLiquido, ConDescuento {
 	private double precio;
 	private int volumen;
 	private String env;
+	private double desc;
 
 	// Constructor
-	public Detergente(String marca, double precio, int volumen, String env) {
+	public Detergente(String marca, double precio, int volumen, String env, double desc) {
 		this.marca = marca;
 		this.precio = precio;
 		this.volumen = volumen;
 		this.env = env;
+		this.desc = desc;
 	}
 
 	// Getters y setters
@@ -60,28 +62,24 @@ public class Detergente implements EsLiquido, ConDescuento {
 	
 	@Override
 	public void setDescuento(double des) {
-		// TODO Auto-generated method stub
-		
+		this.desc = des;
 	}
 
 	@Override
 	public double getDescuento() {
-		// TODO Auto-generated method stub
-		return 0;
+		return desc;
 	}
 
 	@Override
 	public double getPrecioDescuento() {
-		// TODO Auto-generated method stub
-		return 0;
+		double decimalDes = desc / 100;
+		double tDescuento = decimalDes * getPrecio();
+		return getPrecio() - tDescuento;
 	}
-
 
 	@Override
 	public String toString() {
-		return "Detergente {marca=" + marca + ", precio=" + precio + ", tipoEnvase="+ getTipoEnvase() +"}";
+		return "Detergente{marca=" + marca + ", precio=" + precio + ", volumen=" + getVolumen() + "ml, tipoEnvase="+ getTipoEnvase() + ", descuento=" + getDescuento() + ", precio con descuento=" + getPrecioDescuento() + "}";
 	}
-
-
 
 }
