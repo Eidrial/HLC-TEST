@@ -5,13 +5,13 @@ public class Cuenta {
 	private String titular;
 	private double cantidad;
 
-	// Constructor 1: Solo recibe el titular (la cantidad por defecto será 0.0)
+	// Constructor 1
 	public Cuenta(String titular) {
 		this.titular = titular;
 		this.cantidad = 0.0;
 	}
 
-	// Constructor 2: Recibe el titular y la cantidad
+	// Constructor 2
 	public Cuenta(String titular, double cantidad) {
 		this.titular = titular;
 		this.cantidad = cantidad;
