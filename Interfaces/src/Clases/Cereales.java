@@ -1,6 +1,7 @@
 package Clases;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import Enum.tipoCereal;
 import Interfaces.EsAlimento;
@@ -75,7 +76,8 @@ public class Cereales implements EsAlimento {
 	// toString
 	@Override
 	public String toString() {
-		return "Cereales{marca=" + marca + ", precio=" + precio + ", tipo=" + tipo + ", caducidad=" + fc +", calorias=" + getCalorias() + "}";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return "Cereales{marca=" + marca + ", precio=" + precio + ", tipo=" + tipo + ", caducidad=" + fc.format(formatter) +", calorias=" + getCalorias() + "}";
 	}
 
 

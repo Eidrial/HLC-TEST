@@ -1,6 +1,7 @@
 package Clases;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import Interfaces.ConDescuento;
 import Interfaces.EsAlimento;
@@ -17,9 +18,11 @@ public class Vino implements EsLiquido, EsAlimento, ConDescuento {
 	private int volumen;
 	private String env;
 	private double desc;
+	private LocalDate fc; 
 
 	// Constructor
-	public Vino(String marca, double grados, double precio, tipoVino tipo, int volumen, String env, double desc) {
+	public Vino(String marca, double grados, double precio, tipoVino tipo, int volumen, String env, double desc,
+			LocalDate fc) {
 		this.marca = marca;
 		this.grados = grados;
 		this.precio = precio;
@@ -27,6 +30,7 @@ public class Vino implements EsLiquido, EsAlimento, ConDescuento {
 		this.volumen = volumen;
 		this.env = env;
 		this.desc = desc;
+		this.fc = fc; 
 	}
 
 	// Getters y setters
@@ -83,32 +87,22 @@ public class Vino implements EsLiquido, EsAlimento, ConDescuento {
 
 	@Override
 	public double getPrecioDescuento() {
-		double decimalDes = desc / 100;
-		double tDescuento = decimalDes * getPrecio();
-		return getPrecio() - tDescuento;
+		return precio - (precio * (desc / 100));
 	}
 
 	@Override
 	public void setCaducidad(LocalDate fc) {
-		// TODO Auto-generated method stub
-
+		this.fc = fc;
 	}
 
 	@Override
 	public LocalDate getCaducidad() {
-		// TODO Auto-generated method stub
-		return null;
+		return fc;
 	}
 
 	@Override
 	public int getCalorias() {
-
-		if (getTipo().equals(tipoVino.tinto)) {
-			return 12 * 10;
-		} else {
-			return 6 * 10;
-		}
-
+		return (int) (grados * 10);
 	}
 
 	@Override
@@ -124,9 +118,9 @@ public class Vino implements EsLiquido, EsAlimento, ConDescuento {
 	// toString
 	@Override
 	public String toString() {
-		return "Vino{marca=" + marca + ", tipoVino=" + getTipo() + ", grados=" + grados + ", precio=" + precio
-				+ ", volumen=" + getVolumen() + "ml, tipoEnvase=" + getTipoEnvase() + ", descuento=" + getDescuento() + ", precio con descuento=" + getPrecioDescuento() + ", calorias=" + getCalorias()
-				+ "}";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return "Vino{marca=" + marca + ", tipoVino=" + tipo + ", grados=" + grados + ", precio=" + precio + ", volumen="
+				+ volumen + " ml, tipoEnvase=" + env + ", caducidad=" + fc.format(formatter) + ", descuento=" + desc + ", precio con descuento="
+				+ getPrecioDescuento() + ", calorias=" + getCalorias() + "}";
 	}
-
 }
